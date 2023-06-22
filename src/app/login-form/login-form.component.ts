@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -7,16 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-form.component.css']
 })
 
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit {
+  protected aFormGroup: FormGroup;
   username: string = '';
   password: string = '';
-  captchaResponse: string = '';
+  siteKey:string = '6LfjA7wmAAAAAJR1ccdk5u-c5-8LPemtprlHY1SV';
 
-  constructor(private router: Router) {
-
+  constructor(private router: Router, private formBuilder: FormBuilder) {
+    this.aFormGroup = new FormGroup({});
   }
-
-  onSubmit() {
+  
+  ngOnInit() {
     // Aquí puedes implementar la lógica de validación del formulario
     // Por ejemplo, puedes verificar si las credenciales son válidas
     // y redirigir al usuario a la página de inicio si el login es exitoso
@@ -25,5 +27,8 @@ export class LoginFormComponent {
     } else {
       alert('Credenciales inválidas');
     }
+    this.aFormGroup = this.formBuilder.group({
+      recaptcha: ['', Validators.required]
+    });
   }
 }
