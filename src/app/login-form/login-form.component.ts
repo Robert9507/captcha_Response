@@ -12,7 +12,7 @@ export class LoginFormComponent implements OnInit {
   protected aFormGroup: FormGroup;
   username: string = '';
   password: string = '';
-  siteKey:string = '6LfjA7wmAAAAAJR1ccdk5u-c5-8LPemtprlHY1SV';
+  siteKey:string = '';
 
   constructor(private router: Router, private formBuilder: FormBuilder) {
     this.aFormGroup = new FormGroup({});
